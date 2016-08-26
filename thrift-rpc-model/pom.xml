@@ -9,18 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.abin.lee</groupId>
-    <artifactId>thrift-rpc-common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
+    <artifactId>thrift-rpc-model</artifactId>
     <packaging>jar</packaging>
-
-
-
-
-
-
-
-
 
 </project>

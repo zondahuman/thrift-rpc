@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tool="http://www.springframework.org/schema/tool" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+			http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool-3.1.xsd
+			http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd"
+	default-lazy-init="true">
+	
+	<description>thrift-servlet服务</description>
+	
+	 <!-- servlet适配器，这里必须明确声明，因为spring默认没有初始化该适配器 -->  
+    <bean id="servletHandlerAdapter" class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter"/>  
+    
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="2"></property>
+	</bean>
+    
+    
+    <!-- servlet -->  
+    <bean name="/contractManageServlet.do" class="com.abin.lee.thrift.service.servlet.ContractManageServlet">
+    	<constructor-arg>
+    		<ref bean="contactManagerImpl"/>
+    	</constructor-arg>  
+    </bean>
+    
+    
+    <!-- servlet proxy -->  
+    <bean name="/contractManageServletProxy.do" class="com.abin.lee.thrift.service.servlet.ThriftServletProxy">
+    	<constructor-arg index="0" value="com.abin.lee.thrift.service.ContactManager"/>
+    	<constructor-arg index="1" value="com.abin.lee.thrift.service.interfacei.contract.Iface"/>
+    	<constructor-arg>
+    		<ref bean="contactManagerImpl"/>
+    	</constructor-arg>  
+    </bean>
+    
+     <bean name="/userServiceServletProxy.do" class="com.abin.lee.thrift.service.servlet.ThriftServletProxy">
+    	<constructor-arg index="0" value="com.abin.lee.thrift.service.UserService"/>
+    	<constructor-arg index="1" value="com.abin.lee.thrift.service.interfacei.user.Iface"/>
+    	<constructor-arg>
+    		<ref bean="userServiceImpl"/>
+    	</constructor-arg>  
+    </bean>
+	
+	
+</beans>
