@@ -4,6 +4,7 @@ package com.abin.lee.thrift.rpc.service; /**
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
+import com.abin.lee.thrift.rpc.model.User;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
