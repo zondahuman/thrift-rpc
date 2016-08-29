@@ -13,6 +13,7 @@
         <module>thrift-rpc-model</module>
         <module>thrift-rpc-main</module>
         <module>thrift-rpc-service</module>
+        <module>thrift-rpc-client</module>
     </modules>
 
     <packaging>pom</packaging>

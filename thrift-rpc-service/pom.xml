@@ -12,4 +12,17 @@
     <artifactId>thrift-rpc-service</artifactId>
     <packaging>jar</packaging>
 
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.abin.lee</groupId>
+            <artifactId>thrift-rpc-model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
+
+
 </project>
