@@ -1,4 +1,4 @@
-package com.abin.lee.thrift.rpc.service.test;
+package com.abin.lee.thrift.rpc.service.common.test;
 
 import com.abin.lee.thrift.rpc.service.UserService;
 import com.abin.lee.thrift.rpc.service.impl.UserServiceImpl;

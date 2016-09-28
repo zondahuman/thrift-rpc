@@ -1,4 +1,4 @@
-package com.abin.lee.thrift.rpc.common;
+package com.abin.lee.thrift.rpc.common.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;

@@ -1,4 +1,4 @@
-package com.abin.lee.thrift.rpc.common;
+package com.abin.lee.thrift.rpc.common.util;
 
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;

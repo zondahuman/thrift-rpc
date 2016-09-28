@@ -1,9 +1,9 @@
-package com.abin.lee.thrift.rpc.service.test;
+package com.abin.lee.thrift.rpc.service.common.test;
 
+import com.abin.lee.thrift.rpc.client.OrderService;
 import com.abin.lee.thrift.rpc.client.UserService;
 import com.abin.lee.thrift.rpc.model.Order;
 import com.abin.lee.thrift.rpc.model.User;
-import com.abin.lee.thrift.rpc.service.OrderService;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;

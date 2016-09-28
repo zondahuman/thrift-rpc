@@ -17,32 +17,23 @@
 			http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd"
 	default-lazy-init="true">
 
-	<description>spring invoker服务</description>
-
-	<bean id="contractService"
-		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-		<property name="service">
-			<ref bean="ContractService" />
-		</property>
-		<property name="serviceInterface" value="com.abin.lee.thrift.service.interfacei.contract.Iface">
-		</property>
-	</bean>
-	<bean id="ContractService" class="com.abin.lee.thrift.service.impl.ContactManagerImpl" />
+	<description>thrift-rpc-client</description>
 
 
-
-
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/contractService.ivs">contractService</prop>
-			</props>
-		</property>
-	</bean>
-
-
-	<bean id="httpRequestHandlerAdapter"
-		class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
-
-
+    <bean id="thriftClient" class="com.abin.lee.thrift.rpc.common.rpc.SpringClient" init-method="init" destroy-method="close">
+        <property name="port" value="7911" />
+        <property name="serviceMap">
+            <map>
+                <entry key = "OrderService">
+                    <value>com.abin.lee.thrift.rpc.client.OrderService</value>
+                </entry>
+                <entry key = "UserService">
+                    <value>com.abin.lee.thrift.rpc.client.UserService</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+	
+	
+	
 </beans>

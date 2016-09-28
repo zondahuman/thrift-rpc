@@ -17,37 +17,11 @@
 			http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd"
 	default-lazy-init="true">
 
-	<description>thrift服务</description>
-	
-	<util:list id="thriftServerList">
-		<ref bean="userProxy" />
-		<ref bean="contactProxy" />
-		<ref bean="pythonServiceProxy" />
-	</util:list>
-	
-	<bean id="userProxy" class="com.abin.lee.thrift.service.proxy.ThriftServerProxy">
-		<property name="port" value="7911"/>
-		<property name="serviceInterface" value="com.abin.lee.thrift.service.UserService"/>
-		<property name="serviceImplObject" ref="userServiceImpl"/>	
-		<property name="serviceIface" value="com.abin.lee.thrift.service.interfacei.user.Iface"/>
-	</bean>
-	
-	
-	<bean id="contactProxy" class="com.abin.lee.thrift.service.proxy.ThriftServerProxy">
-		<property name="port" value="7912"/>
-		<property name="serviceInterface" value="com.abin.lee.thrift.service.ContactManager"/>
-		<property name="serviceImplObject" ref="contactManagerImpl"/>	
-		<property name="serviceIface" value="com.abin.lee.thrift.service.interfacei.contract.Iface"/>
-	</bean>
-	
-	<bean id="pythonServiceProxy" class="com.abin.lee.thrift.service.proxy.ThriftServerProxy">
-		<property name="port" value="7913"/>
-		<property name="serviceInterface" value="com.abin.lee.thrift.service.PythonService"/>
-		<property name="serviceImplObject" ref="pythonServiceImpl"/>	
-	</bean>
-	
-	
-	
+
+
+    <import resource="classpath*:spring/spring-thrift-server.xml" />
+    <import resource="classpath*:spring/spring-thrift-client.xml" />
+
 	
 	
 </beans>

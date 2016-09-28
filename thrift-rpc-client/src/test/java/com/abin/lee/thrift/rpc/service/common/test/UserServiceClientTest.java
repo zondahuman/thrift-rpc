@@ -1,7 +1,6 @@
-package com.abin.lee.thrift.rpc.service.test;
+package com.abin.lee.thrift.rpc.service.common.test;
 
 import com.abin.lee.thrift.rpc.client.UserService;
-import com.abin.lee.thrift.rpc.common.JsonUtil;
 import com.abin.lee.thrift.rpc.model.User;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;

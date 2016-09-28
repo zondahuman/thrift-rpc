@@ -16,41 +16,29 @@
 			http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool-3.1.xsd
 			http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd"
 	default-lazy-init="true">
+
+	<description>thrift-rpc-server</description>
+
+    <!-- 登录服务 -->
+    <bean id="orderService" class="com.abin.lee.thrift.rpc.service.impl.OrderServiceImpl" />
+    <!-- 注册服务 -->
+    <bean id="userService" class="com.abin.lee.thrift.rpc.service.impl.UserServiceImpl" />
+
+    <bean id="thriftServer" class="com.abin.lee.thrift.rpc.common.rpc.SpringServer" init-method="init" destroy-method="close">
+        <property name="port" value="7911" />
+        <property name="serviceList">
+            <map>
+                <entry key = "OrderService">
+                    <ref bean = "orderService" />
+                </entry>
+                <entry key = "UserService">
+                    <ref bean = "userService" />
+                </entry>
+            </map>
+        </property>
+    </bean>
 	
-	<description>thrift-servlet服务</description>
 	
-	 <!-- servlet适配器，这里必须明确声明，因为spring默认没有初始化该适配器 -->  
-    <bean id="servletHandlerAdapter" class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter"/>  
-    
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
-		<property name="order" value="2"></property>
-	</bean>
-    
-    
-    <!-- servlet -->  
-    <bean name="/contractManageServlet.do" class="com.abin.lee.thrift.service.servlet.ContractManageServlet">
-    	<constructor-arg>
-    		<ref bean="contactManagerImpl"/>
-    	</constructor-arg>  
-    </bean>
-    
-    
-    <!-- servlet proxy -->  
-    <bean name="/contractManageServletProxy.do" class="com.abin.lee.thrift.service.servlet.ThriftServletProxy">
-    	<constructor-arg index="0" value="com.abin.lee.thrift.service.ContactManager"/>
-    	<constructor-arg index="1" value="com.abin.lee.thrift.service.interfacei.contract.Iface"/>
-    	<constructor-arg>
-    		<ref bean="contactManagerImpl"/>
-    	</constructor-arg>  
-    </bean>
-    
-     <bean name="/userServiceServletProxy.do" class="com.abin.lee.thrift.service.servlet.ThriftServletProxy">
-    	<constructor-arg index="0" value="com.abin.lee.thrift.service.UserService"/>
-    	<constructor-arg index="1" value="com.abin.lee.thrift.service.interfacei.user.Iface"/>
-    	<constructor-arg>
-    		<ref bean="userServiceImpl"/>
-    	</constructor-arg>  
-    </bean>
 	
 	
 </beans>

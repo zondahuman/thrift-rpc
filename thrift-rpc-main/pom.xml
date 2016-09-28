@@ -20,6 +20,11 @@
             <artifactId>thrift-rpc-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.abin.lee</groupId>
+            <artifactId>thrift-rpc-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

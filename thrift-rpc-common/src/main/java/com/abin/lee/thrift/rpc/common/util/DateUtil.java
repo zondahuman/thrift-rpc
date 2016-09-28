@@ -1,4 +1,4 @@
-package com.abin.lee.thrift.rpc.common;
+package com.abin.lee.thrift.rpc.common.util;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
