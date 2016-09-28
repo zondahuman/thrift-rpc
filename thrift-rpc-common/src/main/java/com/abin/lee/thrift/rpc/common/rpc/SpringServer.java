@@ -61,12 +61,13 @@ public class SpringServer {
 				if (processor == null) {
 					throw new IllegalClassFormatException("service-class should implements Iface");
 				}
-				
+
 			}
 			TServer server = new TThreadPoolServer(new TThreadPoolServer.Args(
 			serverTransport).processor(mprocessor));
 			System.out.println("Starting server on port 7911 ...");
 			server.serve();
+            System.out.println("Started server on port 7911 ...");
 //			TServerSocket serverTransport = new TServerSocket(7911);
 //			// 用户登录
 //			LoginService.Processor loginProcessor = new LoginService.Processor(

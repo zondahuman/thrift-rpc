@@ -10,7 +10,8 @@
 		<param-value>
 			classpath:spring/spring-*.xml
 		</param-value>
-	</context-param>
+        <load-on-startup>5</load-on-startup>
+    </context-param>
 
     <listener>
         <listener-class>

@@ -26,14 +26,13 @@ public class RpcController {
     protected final static Logger LOGGER = LoggerFactory.getLogger(RpcController.class);
 
     @Resource
-    SpringClient thriftClient;
+    SpringClient springClient;
 
     @ResponseBody
     @RequestMapping(value = "/userInfo")
     public String userInfo(String param) {
         String result = "";
         try {
-            SpringClient springClient = (SpringClient) SpringContextUtils.getBean("thriftClient");
             UserService.Client userClient = (UserService.Client) springClient.getClient("UserService");
             User user = userClient.getById(Longs.tryParse(param));
             if (user != null) {
@@ -44,7 +43,7 @@ public class RpcController {
             }
 
         } catch (Exception e) {
-            LOGGER.error("e={} message={}", e, e.getMessage());
+            LOGGER.error("e={}",  e);
         }
         return result;
     }
