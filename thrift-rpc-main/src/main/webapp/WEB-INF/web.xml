@@ -2,16 +2,23 @@
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 
-    <display-name>ThriftTest</display-name>
+    <display-name>thrift-rpc</display-name>
 
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/WEB-INF/springmvc-servlet.xml,
-			classpath:spring/applicationContext*.xml
+			classpath:spring/spring-*.xml
 		</param-value>
 	</context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
 	
 	
 	<filter>
@@ -41,19 +48,11 @@
 	
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.ivs</url-pattern>
-	</servlet-mapping>
 
-	<listener>
-		<listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-	</listener>
+
 	
 
  
